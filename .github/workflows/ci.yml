@@ -1,6 +1,6 @@
 name: Github Actions Demo
 on:
-  push: branches
+  push:
   workflow_dispatch:
     inputs:
       environment:
@@ -20,7 +20,6 @@ on:
 
 description: actions demo description
 # permissions: write-all
-env:
 
 jobs:
   Example-Action-job:
