@@ -1,5 +1,27 @@
 name: Github Actions Demo
-on: push
+on:
+  push: branches
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Select the target environment
+        default: dit1
+        options:
+          - dit1
+          - sit1
+          - uat1
+        required: true
+        type: choice
+      tags:
+        description: Provide commit tag
+        default: ""
+        required: true
+        type: string
+
+description: actions demo description
+# permissions: write-all
+env:
+
 jobs:
   Example-Action-job:
     name: first-job
