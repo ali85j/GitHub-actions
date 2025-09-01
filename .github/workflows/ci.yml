@@ -3,7 +3,7 @@ on: push
 jobs:
   Example-Action-job:
     name: first-job
-    runs-on: self-hosted macOS x64
+    runs-on: [self-hosted macOS x64]
     steps:
       - name: run script
         run: ls
