@@ -5,5 +5,14 @@ jobs:
     name: first-job
     runs-on: [self-hosted, macOS, x64]
     steps:
-      - name: run script
-        run: ls
+      - name: Runner info
+        run: echo  "The job was triggered by a ${{ github.event_name }} event and runner os is ${{ runner.os }}"
+      - name: condition to check
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo " This is a pull request"
+      - name: list files
+        run: |
+          ls ${{ github.workspace}}
+      - name: checkout code
+        uses: actions/checkout@v2
+      - run: echo "The ${{ github.repository}} has been cloned to the runner"
