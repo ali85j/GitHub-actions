@@ -33,7 +33,13 @@ jobs:
         run: |
           echo  "The job was triggered by a ${{ github.event_name }} event and runner os is ${{ runner.os }}";
           echo " Runner os: ${{ runner.os}}"
-          echo " Runner tools ${{ runner.tool_cache}}"
+          echo " Runner tools ${{ runner.tool_cache }}"
+          echo " Runner object ${{ runner}}"
+          echo " github run id: $${{ github.run_id }}"
+          echo " github object: $${{ github }}"
+          echo " job status: ${{ job.status}}"
+          echo " input variable environment vlaue:- ${{ inputs.environment}}"
+
       - name: condition to check
         if: ${{ github.event_name == 'pull_request' }}
         run: echo " This is a pull request"
