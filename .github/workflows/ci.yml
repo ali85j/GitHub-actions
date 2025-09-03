@@ -27,6 +27,9 @@ description: actions demo description
 jobs:
   Example-Action-job:
     name: first-job
+    env:
+      DB_PASS: "123"
+      DB_USER: "db user"
     runs-on: [self-hosted, macOS, x64]
     steps:
       - name: Runner info
@@ -38,7 +41,8 @@ jobs:
           echo " github run id: $${{ github.run_id }} ${{ github.ref_name}} ${{ github.run_number}}"
           echo " github object: $${{ github }}"
           echo " job status: ${{ job.status}}"
-          echo " input variable environment vlaue:- ${{ inputs.environment}}"
+          echo " input variable environment value:- ${{ inputs.environment}}"
+          echo " input variable environment value:- ${{ env.DB_PASS}} ${{ env.DB_USER}}"
 
       - name: condition to check
         if: ${{ github.event_name == 'pull_request' }}
