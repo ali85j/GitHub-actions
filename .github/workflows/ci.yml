@@ -34,7 +34,6 @@ jobs:
     steps:
       - name: Runner info
         run: |
-          #!/bin/sh
           echo  "The job was triggered by a ${{ github.event_name }} event and runner os is ${{ runner.os }}";
           echo " Runner os: ${{ runner.os}}"
           echo " Runner tools ${{ runner.tool_cache }}"
