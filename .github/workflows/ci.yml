@@ -40,7 +40,7 @@ jobs:
           echo " Runner tools ${{ runner.tool_cache }}"
           echo " Runner object:- ${{ runner.arch }} ${{ runner.name}} ${{ runner.temp }}"
           echo " github run id: $${{ github.run_id }} ${{ github.ref_name}} ${{ github.run_number}}"
-          echo " github object: $${{ github }}"
+          echo " github object: $${{ fromJson(github) }}"
           echo " job status: ${{ job.status}}"
           echo " input variable environment value:- ${{ inputs.environment}}"
           echo " input variable environment value:- ${{ env.DB_PASS}} ${{ env.DB_USER}}"
