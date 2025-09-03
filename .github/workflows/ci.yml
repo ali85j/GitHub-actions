@@ -43,6 +43,8 @@ jobs:
           echo " job status: ${{ job.status}}"
           echo " input variable environment value:- ${{ inputs.environment}}"
           echo " input variable environment value:- ${{ env.DB_PASS}} ${{ env.DB_USER}}"
+          cat env
+          ls
 
       - name: condition to check
         if: ${{ github.event_name == 'pull_request' }}
