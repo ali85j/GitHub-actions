@@ -33,6 +33,8 @@ jobs:
     runs-on: [self-hosted, macOS, x64]
     steps:
       - name: Runner info
+        env:
+          FAIL_STEP: ${{ github.event.inputs.environment }}
         run: |
           echo  "The job was triggered by a ${{ github.event_name }} event and runner os is ${{ runner.os }}";
           echo " Runner os: ${{ runner.os}}"
@@ -43,12 +45,13 @@ jobs:
           echo " job status: ${{ job.status}}"
           echo " input variable environment value:- ${{ inputs.environment}}"
           echo " input variable environment value:- ${{ env.DB_PASS}} ${{ env.DB_USER}}"
-
-          cat env
-          ls
+          if [[ $FAIL_STEP == true]]
+          then 
+            exit 1
+          fi
 
       - name: condition to check
-        if: ${{ github.event_name == 'pull_request' }}
+        if: github.event_name == 'pull_request'
         run: echo " This is a pull request"
       - name: list files
         run: |
@@ -60,6 +63,20 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.x
+      - run: echo test
+      - run: |
+          echo " Action ref:- ${{ github.action_ref}}  ${{ env.APP_BRANCH_NAME}}" 
+          cat ${{ env.APP_BRANCH_NAME}}
+          if [[ ${{ env.APP_BRANCH_NAME == true}}]]
+          then
+            exit 1
+          fi
+        id: action-ref
+        if: env.APP_BRANCH_NAME != null
+        env:
+          APP_BRANCH_NAME: ${{ github.ref}}
+      - run: cat ${{ steps.action-ref.outputs}}
+        if: steps.action-ref == success()
 
   Success-job:
     name: complete job
