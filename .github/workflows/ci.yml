@@ -67,7 +67,7 @@ jobs:
       - run: |
           echo " Action ref:- ${{ github.action_ref}}  ${{ env.APP_BRANCH_NAME}}" 
           cat ${{ env.APP_BRANCH_NAME}}
-          if [[ ${{ env.APP_BRANCH_NAME == true}}]]
+          if [[ ${{ env.APP_BRANCH_NAME == true}} ]]
           then
             exit 1
           fi
