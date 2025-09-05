@@ -17,8 +17,8 @@ on:
         type: choice
       tags:
         description: Provide commit tag
-        default: ""
-        required: true
+        default: "d"
+        required: false
         type: string
 
 description: actions demo description
@@ -45,7 +45,7 @@ jobs:
           echo " job status: ${{ job.status}}"
           echo " input variable environment value:- ${{ inputs.environment}}"
           echo " input variable environment value:- ${{ env.DB_PASS}} ${{ env.DB_USER}}"
-          if [[ $FAIL_STEP == true]]
+          if [[ $FAIL_STEP == true ]]
           then 
             exit 1
           fi
