@@ -36,6 +36,8 @@ jobs:
       DB_USER: "db user"
     runs-on: [self-hosted, macOS, x64]
     steps:
+      - name: run for
+        run: echo  "Job ran for ${{ matrix.dot-net}} ${{ matrix.os}}"
       - name: Runner info
         env:
           FAIL_STEP: ${{ github.event.inputs.environment }}
