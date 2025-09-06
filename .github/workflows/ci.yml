@@ -66,16 +66,6 @@ jobs:
         with:
           dotnet-version: 5.0.x
       - run: echo test
-      - run: |
-          echo " Action ref:- ${{ github.action_ref}}  ${{ env.APP_BRANCH_NAME}}" 
-          cat ${{ env.APP_BRANCH_NAME}}
-
-        id: action-ref
-        if: env.APP_BRANCH_NAME != null
-        env:
-          APP_BRANCH_NAME: ${{ github.ref}}
-      - run: cat ${{ steps.action-ref.outputs}}
-        if: steps.action-ref == success()
 
   Success-job:
     name: complete job
