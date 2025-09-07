@@ -1,0 +1,24 @@
+name: Deploy workflow
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        options:
+          - dit1
+          - sit1
+          - uat1
+        default: dit1
+        type: choice
+        required: false
+jobs:
+  CD:
+    runs-on: [self-hosted]
+    env:
+      ENV_VAR_1: 123
+    outputs:
+      Success: ${{ env.ENV_VAR_1}}
+    steps:
+      - name: deploy
+        uses: actions/download-artifact@v5
+        with:
+          name: my-artifact
