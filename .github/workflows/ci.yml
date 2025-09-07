@@ -75,6 +75,19 @@ jobs:
           name: my-artifact
           path: ./world.txt
 
+  CD:
+    runs-on: [self-hosted]
+    env:
+      ENV_VAR_1: 123
+    outputs:
+      Success: ${{ env.ENV_VAR_1}}
+    steps:
+      - name: deploy
+        uses: actions/download-artifact@v5
+        with:
+          name: my-artifact
+      - name: Display structure of the downloaded file
+        run: ls -R
   Success-job:
     name: complete job
     runs-on: [self-hosted]
