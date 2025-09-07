@@ -27,6 +27,7 @@ description: actions demo description
 jobs:
   Example-Action-job:
     name: first-job
+    environment: ${{ github.event.inputs.environment }}
     strategy:
       matrix:
         os: [macos]
