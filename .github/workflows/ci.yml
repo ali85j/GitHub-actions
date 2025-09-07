@@ -1,14 +1,10 @@
 name: Github Actions Demo
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
     inputs:
       environment:
         description: Select the target environment
-        default: dit1
+        default: DIT
         options:
           - DIT
           - SIT
