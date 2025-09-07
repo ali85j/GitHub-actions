@@ -22,3 +22,5 @@ jobs:
         uses: actions/download-artifact@v5
         with:
           name: my-artifact
+      - name: Display structure of the downloaded file
+        run: ls -R
