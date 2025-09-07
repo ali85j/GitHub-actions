@@ -10,9 +10,9 @@ on:
         description: Select the target environment
         default: dit1
         options:
-          - dit1
-          - sit1
-          - uat1
+          - DIT
+          - SIT
+          - PROD
         required: true
         type: choice
       tags:
